@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Subcontractor &amp; Supplier Registration</title>
+<meta name="description" content="Register your company as a subcontractor or supplier.">
+<link rel="icon" href="assets/logo-transparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script>
+/* Switch to Arabic before the page draws, if the visitor chose it */
+try { if (/[?&]lang=ar/.test(location.search) || (!/[?&]lang=en/.test(location.search) && localStorage.getItem("site-lang") === "ar")) {
+  var h = document.documentElement; h.lang = "ar"; h.dir = "rtl"; h.classList.add("i18n-pending");
+  setTimeout(function () { h.classList.remove("i18n-pending"); }, 1500);
+} } catch (e) {}
+</script>
+
+</head>
+<body data-page="register">
+
+<div class="topbar" id="topbar"></div>
+<header class="site-header" id="header"></header>
+
+<main>
+  <div class="page-head">
+    <div class="wrap">
+      <a class="back-link" href="index.html">&larr; Back to Home</a>
+      <h1>Subcontractor &amp; Supplier Registration</h1>
+      <p id="reg-intro">Register your company to work with us as a subcontractor or supplier. Our team reviews every registration and will contact you when a suitable project is available.</p>
+    </div>
+  </div>
+
+  <section class="register-section">
+    <div class="wrap">
+      <form class="reg-form" id="reg-form" novalidate>
+
+        <fieldset class="reg-block">
+          <legend>Registration Type</legend>
+          <div class="choice-row">
+            <label class="choice"><input type="radio" name="Registration Type" value="Subcontractor" id="type-sub" checked> <span>Subcontractor</span></label>
+            <label class="choice"><input type="radio" name="Registration Type" value="Supplier" id="type-sup"> <span>Supplier</span></label>
+            <label class="choice"><input type="radio" name="Registration Type" value="Subcontractor &amp; Supplier" id="type-both"> <span>Both</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="reg-block">
+          <legend>Contact Details</legend>
+          <div class="field-grid">
+            <div class="field">
+              <label for="f-name">Full Name <span class="req">*</span></label>
+              <input type="text" id="f-name" name="Full Name" autocomplete="name" required>
+              <span class="field-error" id="e-name"></span>
+            </div>
+            <div class="field">
+              <label for="f-company">Company Name</label>
+              <input type="text" id="f-company" name="Company Name" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="f-phone">Phone Number <span class="req">*</span></label>
+              <input type="tel" dir="ltr" id="f-phone" name="Phone Number" autocomplete="tel" inputmode="tel" placeholder="01X XXXX XXXX" required>
+              <span class="field-error" id="e-phone"></span>
+            </div>
+            <div class="field">
+              <label for="f-email">Email Address</label>
+              <input type="email" dir="ltr" id="f-email" name="Email Address" autocomplete="email">
+              <span class="field-error" id="e-email"></span>
+            </div>
+            <div class="field">
+              <label for="f-city">City / Governorate</label>
+              <input type="text" id="f-city" name="City" autocomplete="address-level2">
+            </div>
+            <div class="field">
+              <label for="f-years">Years of Experience</label>
+              <select id="f-years" name="Years of Experience">
+                <option value="">Select</option>
+                <option value="Less than 3 years">Less than 3 years</option>
+                <option value="3 to 5 years">3 to 5 years</option>
+                <option value="5 to 10 years">5 to 10 years</option>
+                <option value="More than 10 years">More than 10 years</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="reg-block">
+          <legend>Field of Work <span class="req">*</span></legend>
+          <p class="hint">Select every field your company works in.</p>
+          <div class="trade-grid" id="trade-grid"></div>
+          <div class="field" id="other-wrap" hidden>
+            <label for="f-other">Please specify</label>
+            <input type="text" id="f-other" name="Other Field">
+          </div>
+          <span class="field-error" id="e-trades"></span>
+        </fieldset>
+
+        <fieldset class="reg-block">
+          <legend>Additional Information</legend>
+          <div class="field">
+            <label for="f-notes">Previous projects, team size, or anything else you would like us to know</label>
+            <textarea id="f-notes" name="Notes" rows="5"></textarea>
+          </div>
+        </fieldset>
+
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="reg-submit">
+          <button type="submit" class="btn btn-dark" id="reg-btn">Submit Registration</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+
+      <div class="reg-done" id="reg-done" hidden>
+        <h2>Registration received</h2>
+        <p>Thank you. Our team will review your details and contact you by phone.</p>
+        <a class="btn btn-line" href="index.html">Back to Home</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="footer"></footer>
+
+<script src="data.js"></script>
+<script src="data-ar.js"></script>
+<script src="lang.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

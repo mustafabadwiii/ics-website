@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Careers</title>
+<meta name="description" content="Apply for engineering and accounting jobs.">
+<link rel="icon" href="assets/logo-transparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script>
+/* Switch to Arabic before the page draws, if the visitor chose it */
+try { if (/[?&]lang=ar/.test(location.search) || (!/[?&]lang=en/.test(location.search) && localStorage.getItem("site-lang") === "ar")) {
+  var h = document.documentElement; h.lang = "ar"; h.dir = "rtl"; h.classList.add("i18n-pending");
+  setTimeout(function () { h.classList.remove("i18n-pending"); }, 1500);
+} } catch (e) {}
+</script>
+
+</head>
+<body data-page="careers">
+
+<div class="topbar" id="topbar"></div>
+<header class="site-header" id="header"></header>
+
+<main>
+  <div class="page-head">
+    <div class="wrap">
+      <a class="back-link" href="index.html">&larr; Back to Home</a>
+      <h1>Careers</h1>
+      <p>We are always looking for qualified engineers and accountants. Send us your details and CV, and our HR team will contact you when a suitable position opens.</p>
+    </div>
+  </div>
+
+  <section class="register-section">
+    <div class="wrap">
+      <form class="reg-form" id="job-form" novalidate>
+
+        <fieldset class="reg-block">
+          <legend>Position <span class="req">*</span></legend>
+          <div class="choice-row" id="dept-row"></div>
+          <div class="field" id="spec-wrap" hidden>
+            <label for="j-spec" id="j-spec-label">Specialization <span class="req">*</span></label>
+            <select id="j-spec" name="Specialization"></select>
+            <span class="field-error" id="e-spec"></span>
+          </div>
+          <div class="field" id="spec-other-wrap" hidden>
+            <label for="j-spec-other">Please specify</label>
+            <input type="text" id="j-spec-other" name="Other Specialization">
+          </div>
+          <span class="field-error" id="e-dept"></span>
+        </fieldset>
+
+        <fieldset class="reg-block">
+          <legend>Personal Details</legend>
+          <div class="field-grid">
+            <div class="field">
+              <label for="j-name">Full Name <span class="req">*</span></label>
+              <input type="text" id="j-name" name="Full Name" autocomplete="name" required>
+              <span class="field-error" id="e-jname"></span>
+            </div>
+            <div class="field">
+              <label for="j-phone">Phone Number <span class="req">*</span></label>
+              <input type="tel" dir="ltr" id="j-phone" name="Phone Number" autocomplete="tel" inputmode="tel" placeholder="01X XXXX XXXX" required>
+              <span class="field-error" id="e-jphone"></span>
+            </div>
+            <div class="field">
+              <label for="j-email">Email Address <span class="req">*</span></label>
+              <input type="email" dir="ltr" id="j-email" name="Email Address" autocomplete="email" required>
+              <span class="field-error" id="e-jemail"></span>
+            </div>
+            <div class="field">
+              <label for="j-city">City of Residence</label>
+              <input type="text" id="j-city" name="City" autocomplete="address-level2">
+            </div>
+            <div class="field">
+              <label for="j-years">Years of Experience <span class="req">*</span></label>
+              <select id="j-years" name="Years of Experience" required></select>
+              <span class="field-error" id="e-jyears"></span>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="reg-block">
+          <legend>CV <span class="req">*</span></legend>
+          <label class="file-drop" for="j-cv" id="file-drop">
+            <input type="file" id="j-cv" name="attachment" accept=".pdf,.doc,.docx">
+            <span class="file-drop-title" id="file-name">Choose your CV file</span>
+            <span class="file-drop-hint">PDF or Word, up to 5 MB</span>
+          </label>
+          <span class="field-error" id="e-cv"></span>
+        </fieldset>
+
+        <fieldset class="reg-block">
+          <legend>Additional Information</legend>
+          <div class="field">
+            <label for="j-notes">Current position, expected salary, notice period, or anything else you would like us to know</label>
+            <textarea id="j-notes" name="Notes" rows="5"></textarea>
+          </div>
+        </fieldset>
+
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="reg-submit">
+          <button type="submit" class="btn btn-dark" id="job-btn">Submit Application</button>
+          <p class="form-status" id="job-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+
+      <div class="reg-done" id="job-done" hidden>
+        <h2>Application received</h2>
+        <p>Thank you. Our HR team will review your CV and contact you if your profile matches an open position.</p>
+        <a class="btn btn-line" href="index.html">Back to Home</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="footer"></footer>
+
+<script src="data.js"></script>
+<script src="data-ar.js"></script>
+<script src="lang.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

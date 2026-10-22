@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Company Website</title>
+<meta name="description" content="Contracting and engineering company: MEP works, civil construction, general contracting and database infrastructure.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script>
+/* Switch to Arabic before the page draws, if the visitor chose it */
+try { if (/[?&]lang=ar/.test(location.search) || (!/[?&]lang=en/.test(location.search) && localStorage.getItem("site-lang") === "ar")) {
+  var h = document.documentElement; h.lang = "ar"; h.dir = "rtl"; h.classList.add("i18n-pending");
+  setTimeout(function () { h.classList.remove("i18n-pending"); }, 1500);
+} } catch (e) {}
+</script>
+
+</head>
+<body data-page="home">
+
+<div class="topbar" id="topbar"></div>
+<header class="site-header" id="header"></header>
+
+<main>
+  <!-- Company Introduction -->
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div class="hero-text">
+        <span class="label" id="hero-tag"></span>
+        <h1 id="hero-name"></h1>
+        <p class="hero-intro" id="hero-intro"></p>
+        <div class="hero-actions">
+          <a class="btn btn-dark" href="projects.html">View Clients &amp; Projects</a>
+          <a class="btn btn-line" href="#contact">Contact Us</a>
+        </div>
+        <div class="reg-banners">
+          <a class="reg-banner" href="register.html">
+            <span class="label">Subcontractors &amp; Suppliers</span>
+            <span class="reg-banner-text">Want to work with us? Register your company &rarr;</span>
+          </a>
+          <a class="reg-banner" href="careers.html">
+            <span class="label">Careers</span>
+            <span class="reg-banner-text">Apply for a job &rarr;</span>
+          </a>
+        </div>
+      </div>
+      <figure class="hero-figure" id="hero-figure" aria-roledescription="carousel"></figure>
+    </div>
+    <div class="hero-strip">
+      <div class="wrap" id="hero-strip"></div>
+    </div>
+  </section>
+
+  <!-- About the Company -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>About the Company</h2>
+        <p>Who we are, how we started, and the work we deliver.</p>
+      </div>
+      <div class="about-grid">
+        <div class="est-col">
+          <div class="est">
+            <span class="label">Established</span>
+            <span class="est-year" id="founded"></span>
+          </div>
+          <div class="est">
+            <span class="label">Years of Experience</span>
+            <span class="est-year" id="experience-years"></span>
+          </div>
+          <div class="est">
+            <span class="label">Projects Completed</span>
+            <span class="est-year" id="projects-count"></span>
+          </div>
+        </div>
+        <div class="about-items" id="about-items"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Services -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="section-head section-head-center">
+        <h2>Our Services</h2>
+      </div>
+      <div class="service-grid" id="service-grid"></div>
+    </div>
+  </section>
+
+  <!-- Our Clients -->
+  <section id="clients">
+    <div class="wrap">
+      <div class="section-head section-head-center">
+        <h2>Our Clients</h2>
+      </div>
+      <div id="client-note"></div>
+      <div class="client-grid" id="client-grid"></div>
+      <div class="clients-foot"><a class="btn btn-line" href="projects.html">All Clients &amp; Projects</a></div>
+    </div>
+  </section>
+
+  <!-- Contact Us -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Contact Us</h2>
+        <p>Reach our office for enquiries, tenders and project discussions.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-item"><span class="label">Company Address</span><address id="c-address"></address></div>
+        <div class="contact-item"><span class="label">Office Phone Numbers</span><div id="c-phones" style="display:grid;gap:4px"></div></div>
+        <div class="contact-item"><span class="label">Email Address</span><div id="c-email"></div></div>
+        <div class="contact-logo"><img id="c-logo" src="" alt=""></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="footer"></footer>
+
+<script src="data.js"></script>
+<script src="data-ar.js"></script>
+<script src="lang.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Clients &amp; Projects</title>
+<meta name="description" content="Our clients and the projects we delivered for each of them.">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script>
+/* Switch to Arabic before the page draws, if the visitor chose it */
+try { if (/[?&]lang=ar/.test(location.search) || (!/[?&]lang=en/.test(location.search) && localStorage.getItem("site-lang") === "ar")) {
+  var h = document.documentElement; h.lang = "ar"; h.dir = "rtl"; h.classList.add("i18n-pending");
+  setTimeout(function () { h.classList.remove("i18n-pending"); }, 1500);
+} } catch (e) {}
+</script>
+
+</head>
+<body data-page="projects">
+
+<div class="topbar" id="topbar"></div>
+<header class="site-header" id="header"></header>
+
+<main>
+  <div class="page-head">
+    <div class="wrap">
+      <a class="back-link" href="index.html">&larr; Back to Home</a>
+      <h1>Clients &amp; Projects</h1>
+      <p>Select a client to view the projects we delivered for them and the works carried out on each.</p>
+    </div>
+  </div>
+
+  <!-- Client Selection -->
+  <section class="select-section" aria-label="Client selection">
+    <div class="wrap">
+      <div id="client-note"></div>
+      <div class="client-grid" id="client-grid"></div>
+    </div>
+  </section>
+
+  <!-- Client Projects -->
+  <section class="projects-section">
+    <div class="wrap" id="client-projects" style="scroll-margin-top:96px"></div>
+    <div class="wrap" style="margin-top:56px">
+      <a class="btn btn-dark" href="index.html">Back to Home</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="footer"></footer>
+
+<script src="data.js"></script>
+<script src="data-ar.js"></script>
+<script src="lang.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
