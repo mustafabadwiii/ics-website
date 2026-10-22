@@ -89,6 +89,7 @@ Building & Facilities Maintenance: Preventive and corrective maintenance for bui
      as an email.                                                       */
   registration: {
     sendTo: "pm@ics-alhassan.com",
+    copyTo: "info@ics-alhassan.com",      // also send a copy here (separate several emails with commas, or leave "")
     // Fields of work the applicant can choose from. Add, remove or rename freely.
     trades: [
       "HVAC",
@@ -126,6 +127,7 @@ Building & Facilities Maintenance: Preventive and corrective maintenance for bui
      open it and click "Activate Form" once.                            */
   careers: {
     sendTo: "pm@ics-alhassan.com",
+    copyTo: "info@ics-alhassan.com",      // also send a copy here (separate several emails with commas, or leave "")
     // Each department has its own list of specializations. Add, remove or rename freely.
     departments: [
       {

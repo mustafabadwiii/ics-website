@@ -364,6 +364,7 @@
         "Notes": fd.get("Notes") || "-"
       };
       if (fd.get("Email Address")) payload._replyto = fd.get("Email Address");
+      if (R.copyTo) payload._cc = R.copyTo;
 
       btn.disabled = true; btn.textContent = T("Sending...");
       fetch("https://formsubmit.co/ajax/" + encodeURIComponent(R.sendTo), {
@@ -464,6 +465,7 @@
       hidden("_captcha", "false");
       hidden("_replyto", $("#j-email").value.trim());
       hidden("_next", back);
+      if (J.copyTo) hidden("_cc", J.copyTo);
       jf.action = "https://formsubmit.co/" + J.sendTo;
       jf.method = "POST";
       jf.enctype = "multipart/form-data";
