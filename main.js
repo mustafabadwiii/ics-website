@@ -435,6 +435,11 @@
       return ok;
     }
 
+    /* After a successful send, FormSubmit returns the visitor here with ?sent=1 */
+    if (/[?&]sent=1/.test(location.search)) {
+      jf.hidden = true; $("#job-done").hidden = false;
+    }
+
     jf.addEventListener("submit", function (e) {
       e.preventDefault();
       jStatus.textContent = "";
@@ -446,35 +451,24 @@
       }
       if (jf.querySelector(".honey").value) return;
 
-      var src = new FormData(jf);
-      var specText = spec.value === "Other" && src.get("Other Specialization") ? "Other: " + src.get("Other Specialization") : spec.value;
-      var fd = new FormData();
-      fd.append("_subject", "Job application: " + specText + " - " + src.get("Full Name"));
-      fd.append("_template", "table");
-      fd.append("_replyto", src.get("Email Address"));
-      fd.append("Department", src.get("Department"));
-      fd.append("Specialization", specText);
-      fd.append("Full Name", src.get("Full Name"));
-      fd.append("Phone Number", src.get("Phone Number"));
-      fd.append("Email Address", src.get("Email Address"));
-      fd.append("City", src.get("City") || "-");
-      fd.append("Years of Experience", src.get("Years of Experience"));
-      fd.append("Notes", src.get("Notes") || "-");
-      fd.append("attachment", cv.files[0], cv.files[0].name);
-
+      /* Send as a normal form post: this is the only way FormSubmit attaches the CV file */
+      var specText = spec.value === "Other" && $("#j-spec-other").value.trim() ? "Other: " + $("#j-spec-other").value.trim() : spec.value;
+      var back = location.href.split("#")[0].split("?")[0] + "?sent=1" + (isAr ? "&lang=ar" : "");
+      function hidden(name, value) {
+        var el = jf.querySelector('input[type="hidden"][name="' + name + '"]');
+        if (!el) { el = document.createElement("input"); el.type = "hidden"; el.name = name; jf.appendChild(el); }
+        el.value = value;
+      }
+      hidden("_subject", "Job application: " + specText + " - " + $("#j-name").value.trim());
+      hidden("_template", "table");
+      hidden("_captcha", "false");
+      hidden("_replyto", $("#j-email").value.trim());
+      hidden("_next", back);
+      jf.action = "https://formsubmit.co/" + J.sendTo;
+      jf.method = "POST";
+      jf.enctype = "multipart/form-data";
       jBtn.disabled = true; jBtn.textContent = T("Sending...");
-      fetch("https://formsubmit.co/ajax/" + encodeURIComponent(J.sendTo), {
-        method: "POST", headers: { "Accept": "application/json" }, body: fd
-      }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
-        .then(function (res) {
-          if (!res.ok || String(res.j.success) === "false") throw new Error(res.j.message || "failed");
-          jf.hidden = true; $("#job-done").hidden = false;
-          $("#job-done").scrollIntoView({ block: "center" });
-        })
-        .catch(function () {
-          jBtn.disabled = false; jBtn.textContent = T("Submit Application");
-          jStatus.textContent = T("We could not send your application. Check your internet connection and try again, or email your CV to") + " " + J.sendTo + ".";
-        });
+      HTMLFormElement.prototype.submit.call(jf);
     });
   }
 
